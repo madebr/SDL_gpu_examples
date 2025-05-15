@@ -3,11 +3,6 @@ cbuffer UniformBlock : register(b0, space1)
     float4x4 MatrixTransform : packoffset(c0);
 };
 
-struct SPIRV_Cross_Input
-{
-    float3 inTexCoord : TEXCOORD0;
-};
-
 struct Output
 {
     float3 TexCoord : TEXCOORD0;
