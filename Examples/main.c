@@ -163,6 +163,36 @@ int main(int argc, char **argv)
 #endif
 				}
 			}
+			else if (evt.type == SDL_EVENT_MOUSE_BUTTON_DOWN)
+			{
+				if (evt.button.button == 1)
+				{
+					gotoExampleIndex = exampleIndex + 1;
+					if (gotoExampleIndex >= SDL_arraysize(Examples)) {
+						gotoExampleIndex = 0;
+					}
+				}
+				else if (evt.button.button == 3)
+				{
+					gotoExampleIndex = exampleIndex - 1;
+					if (gotoExampleIndex < 0) {
+						gotoExampleIndex = SDL_arraysize(Examples) - 1;
+					}
+				}
+			}
+			else if (evt.type == SDL_EVENT_MOUSE_WHEEL)
+			{
+				if (evt.wheel.y < 0) {
+					context.DownPressed = true;
+				} else if (evt.wheel.y > 0) {
+					context.UpPressed = true;
+				}
+				if (evt.wheel.x < 0) {
+					context.LeftPressed = true;
+				} else if (evt.wheel.x > 0) {
+					context.RightPressed = true;
+				}
+			}
 			else if (evt.type == SDL_EVENT_KEY_DOWN)
 			{
 				if (evt.key.key == SDLK_D)
